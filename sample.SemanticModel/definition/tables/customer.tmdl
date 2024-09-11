@@ -1,0 +1,64 @@
+table customer
+	lineageTag: 58539713-e5d2-4bc0-a9e6-6994f33d6a57
+
+	column customer_key
+		dataType: string
+		lineageTag: 60747cc0-8857-4cd1-b033-07354596f3f1
+		summarizeBy: none
+		sourceColumn: customer_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 5a1077c6-1be6-4dc3-9704-21bfdde328f3
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_name
+		dataType: string
+		lineageTag: 87d3541f-82bd-4dab-ae27-5f3ea6645579
+		summarizeBy: none
+		sourceColumn: customer_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_country
+		dataType: string
+		lineageTag: d642cae0-d920-4eb2-a817-b9100cd29c0f
+		summarizeBy: none
+		sourceColumn: customer_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'customer_region '
+		dataType: string
+		lineageTag: 6feea56d-2e1e-4c1a-8aed-d15eb31a8c22
+		summarizeBy: none
+		sourceColumn: "customer_region "
+
+		annotation SummarizationSetBy = Automatic
+
+	column dimension_1
+		dataType: string
+		lineageTag: ec8c9018-9b3d-4d60-be30-fe863cf88849
+		summarizeBy: none
+		sourceColumn: dimension_1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition customer = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\VenkataRishitha\Training\CRB\customer.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"customer_key", type text}, {"customer_id", Int64.Type}, {"customer_name", type text}, {"customer_country", type text}, {"customer_region ", type text}, {"dimension_1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
