@@ -32,11 +32,6 @@ table snowball_output
 		summarizeBy: none
 		sourceColumn: month_roll
 
-		variation Variation
-			isDefault
-			relationship: 25e3ca04-bb87-4fbb-aa3b-c015b414abd3
-			defaultHierarchy: LocalDateTable_481e1f75-2945-4e48-8d2c-a06c8bd459bf.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date

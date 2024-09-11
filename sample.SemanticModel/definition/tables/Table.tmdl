@@ -1,0 +1,111 @@
+table Table
+	lineageTag: ecca95e5-3c43-4682-af41-354798535e93
+
+	measure BOP = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[bop_arr]<>0)
+		formatString: 0
+		lineageTag: d0d54d9c-eca2-41a2-a4a5-2c4a90786619
+
+	measure Customer_Churn = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[customer_churn]<>0)
+		formatString: 0
+		lineageTag: fce3a345-bb81-4401-9b91-cff910a9911a
+
+	measure Product_Churn = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[product_churn]<>0)
+		formatString: 0
+		lineageTag: 52ebd64c-6b7c-4f04-8a9c-6c9230a284ff
+
+	measure Downsell = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[downsell]<>0)
+		formatString: 0
+		lineageTag: 23ed0243-a3d1-4633-ac37-5279276370c4
+
+	measure GRR = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[grr]<>0)
+		formatString: 0
+		lineageTag: b1e17ea3-ab2a-4d35-9dc5-9bb7436c47f1
+
+	measure Upsell = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[upsell]<>0)
+		formatString: 0
+		lineageTag: 81e0e714-9040-493c-bfa2-084d76f00361
+
+	measure CrossSell = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[cross_sell]<>0)
+		formatString: 0
+		lineageTag: 1f220755-eff0-4241-8282-5a766bf64b7f
+
+	measure NRR = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[nrr]<>0)
+		formatString: 0
+		lineageTag: 521e744d-aad6-49c7-9cbc-fb3c467e499b
+
+	measure New_Customer = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[product_churn]<>0)
+		formatString: 0
+		lineageTag: 5f82fd69-b923-47c4-8ffb-3a71cbb0a042
+
+	measure EOP = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[eop_arr]<>0)
+		formatString: 0
+		lineageTag: dc4ef693-4548-4b4c-9b36-3e063063492b
+
+	measure Product_Churn_Count_Customers = CALCULATE(DISTINCTCOUNT(snowball_output[customer_key]), snowball_output[product_churn]<>0)
+		formatString: 0
+		lineageTag: 03203eb9-dec3-4409-a4b3-a5859cab0801
+
+	measure '% Customer_Churn' = DIVIDE(SUM(snowball_output[customer_churn]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: 575a805b-0e0f-4dd6-85a5-0f5406139d52
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Product_Churn' = DIVIDE(SUM(snowball_output[product_churn]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: fdebe480-be64-4273-8fe1-8dd4c6a08d2a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Downsell' = DIVIDE(SUM(snowball_output[downsell]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: 2d395aa0-d05a-421c-aedf-2a0cd86cf888
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% GRR' = DIVIDE(SUM(snowball_output[grr]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: 49386d26-73d9-4878-ac23-e7a04bb9606c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Upsell' = DIVIDE(SUM(snowball_output[upsell]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: 40cb12ba-f12d-4d39-af9b-3f1ac8383b76
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Cross_Sell' = DIVIDE(SUM(snowball_output[cross_sell]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: 3e525f82-56ae-4a8a-931a-ba58b61ef5b2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% NRR' = DIVIDE(SUM(snowball_output[nrr]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: b3482441-fbe7-4a16-bebd-a9589f4024ae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% New_Customer' = DIVIDE(SUM(snowball_output[new_customer]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: 9ea594b5-bb36-41bb-a4fa-19beeb60adeb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% EOP' = DIVIDE(SUM(snowball_output[eop_arr]), SUM(snowball_output[bop_arr]), 0) * 100
+		lineageTag: 9a69d3d6-e059-4369-bbd1-98caa0d2216f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		dataType: int64
+		formatString: 0
+		lineageTag: f44ca658-37be-42b7-a3ae-d2eca155e22f
+		summarizeBy: sum
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Table = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = d72a85d168b7494381e1e18710caa490
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

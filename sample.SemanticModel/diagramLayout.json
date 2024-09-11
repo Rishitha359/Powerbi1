@@ -4,23 +4,10 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 240,
         "y": 0
       },
       "nodes": [
-        {
-          "location": {
-            "x": 0,
-            "y": 0
-          },
-          "nodeIndex": "results",
-          "nodeLineageTag": "a03cd918-7073-4758-af50-c983be57e0ea",
-          "size": {
-            "height": 300,
-            "width": 234
-          },
-          "zIndex": 0
-        },
         {
           "location": {
             "x": 284,
@@ -56,6 +43,32 @@
           "nodeLineageTag": "fbe967ef-c25a-4e77-b4be-3f5d2ad6c651",
           "size": {
             "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 489,
+            "y": 349
+          },
+          "nodeIndex": "Calendar",
+          "nodeLineageTag": "8de50ce2-6163-43be-b2ba-79442ae30640",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1173,
+            "y": 174.5
+          },
+          "nodeIndex": "Table",
+          "nodeLineageTag": "ecca95e5-3c43-4682-af41-354798535e93",
+          "size": {
+            "height": 200,
             "width": 234
           },
           "zIndex": 0
